@@ -45,21 +45,21 @@ impl Labels {
         use std::any::Any;
         use RegisteredSealProof::*;
         match proof {
-            StackedDrg2KiBV1 | StackedDrg2KiBV1_1 => {
+            StackedDrg2KiBV1 => {
                 if let Some(labels) = Any::downcast_ref::<RawLabels<SectorShape2KiB>>(labels) {
                     Ok(Labels::StackedDrg2KiBV1(labels.clone()))
                 } else {
                     bail!("invalid labels provided")
                 }
             }
-            StackedDrg8MiBV1 | StackedDrg8MiBV1_1 => {
+            StackedDrg8MiBV1 => {
                 if let Some(labels) = Any::downcast_ref::<RawLabels<SectorShape8MiB>>(labels) {
                     Ok(Labels::StackedDrg8MiBV1(labels.clone()))
                 } else {
                     bail!("invalid labels provided")
                 }
             }
-            StackedDrg512MiBV1 | StackedDrg512MiBV1_1 => {
+            StackedDrg512MiBV1 => {
                 if let Some(labels) = Any::downcast_ref::<RawLabels<SectorShape512MiB>>(labels) {
                     Ok(Labels::StackedDrg512MiBV1(labels.clone()))
                 } else {
@@ -80,7 +80,7 @@ impl Labels {
                     bail!("invalid labels provided")
                 }
             }
-            StackedDrg64GiBV1 | StackedDrg64GiBV1_1 => {
+            StackedDrg64GiBV1 => {
                 if let Some(labels) = Any::downcast_ref::<RawLabels<SectorShape64GiB>>(labels) {
                     Ok(Labels::StackedDrg64GiBV1(labels.clone()))
                 } else {
@@ -183,7 +183,7 @@ impl VanillaSealProof {
         use std::any::Any;
         use RegisteredSealProof::*;
         match proof {
-            StackedDrg2KiBV1 | StackedDrg2KiBV1_1 => {
+            StackedDrg2KiBV1 => {
                 if let Some(proofs) =
                     Any::downcast_ref::<Vec<Vec<RawVanillaSealProof<SectorShape2KiB>>>>(proofs)
                 {
@@ -192,7 +192,7 @@ impl VanillaSealProof {
                     bail!("invalid proofs provided")
                 }
             }
-            StackedDrg8MiBV1 | StackedDrg8MiBV1_1 => {
+            StackedDrg8MiBV1 => {
                 if let Some(proofs) =
                     Any::downcast_ref::<Vec<Vec<RawVanillaSealProof<SectorShape8MiB>>>>(proofs)
                 {
@@ -201,7 +201,7 @@ impl VanillaSealProof {
                     bail!("invalid proofs provided")
                 }
             }
-            StackedDrg512MiBV1 | StackedDrg512MiBV1_1 => {
+            StackedDrg512MiBV1 => {
                 if let Some(proofs) =
                     Any::downcast_ref::<Vec<Vec<RawVanillaSealProof<SectorShape512MiB>>>>(proofs)
                 {
@@ -228,7 +228,7 @@ impl VanillaSealProof {
                     bail!("invalid proofs provided")
                 }
             }
-            StackedDrg64GiBV1 | StackedDrg64GiBV1_1 => {
+            StackedDrg64GiBV1 => {
                 if let Some(proofs) =
                     Any::downcast_ref::<Vec<Vec<RawVanillaSealProof<SectorShape64GiB>>>>(proofs)
                 {

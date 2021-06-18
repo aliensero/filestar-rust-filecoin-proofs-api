@@ -64,17 +64,17 @@ impl RegisteredSealProof {
     pub fn partitions(self) -> u8 {
         use RegisteredSealProof::*;
         match self {
-            StackedDrg2KiBV1 | StackedDrg2KiBV1_1 => *constants::POREP_PARTITIONS
+            StackedDrg2KiBV1  => *constants::POREP_PARTITIONS
                 .read()
                 .expect("porep partitions read error")
                 .get(&constants::SECTOR_SIZE_2_KIB)
                 .expect("invalid sector size"),
-            StackedDrg8MiBV1 | StackedDrg8MiBV1_1 => *constants::POREP_PARTITIONS
+            StackedDrg8MiBV1 => *constants::POREP_PARTITIONS
                 .read()
                 .expect("porep partitions read error")
                 .get(&constants::SECTOR_SIZE_8_MIB)
                 .expect("invalid sector size"),
-            StackedDrg512MiBV1 | StackedDrg512MiBV1_1 => *constants::POREP_PARTITIONS
+            StackedDrg512MiBV1 => *constants::POREP_PARTITIONS
                 .read()
                 .expect("porep partitions read error")
                 .get(&constants::SECTOR_SIZE_512_MIB)
@@ -89,7 +89,7 @@ impl RegisteredSealProof {
                 .expect("porep partitions read error")
                 .get(&constants::SECTOR_SIZE_32_GIB)
                 .expect("invalid sector size"),
-            StackedDrg64GiBV1 | StackedDrg64GiBV1_1 => *constants::POREP_PARTITIONS
+            StackedDrg64GiBV1 => *constants::POREP_PARTITIONS
                 .read()
                 .expect("porep partitions read error")
                 .get(&constants::SECTOR_SIZE_64_GIB)
@@ -473,12 +473,6 @@ mod tests {
                 | RegisteredSealProof::StackedDrg512MiBV1
                 | RegisteredSealProof::StackedDrg32GiBV1
                 | RegisteredSealProof::StackedDrg64GiBV1 => assert!(is_legacy),
-
-                RegisteredSealProof::StackedDrg2KiBV1_1
-                | RegisteredSealProof::StackedDrg8MiBV1_1
-                | RegisteredSealProof::StackedDrg512MiBV1_1
-                | RegisteredSealProof::StackedDrg32GiBV1_1
-                | RegisteredSealProof::StackedDrg64GiBV1_1 => assert!(!is_legacy),
             }
         }
     }
